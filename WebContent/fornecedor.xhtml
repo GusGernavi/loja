@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/backoffice/templateBackoffice/template.xhtml">
+
+	<ui:define name="title">Fornecedor</ui:define>
+
+	<ui:define name="head"></ui:define>
+	<ui:define name="viewname">
+		<li><p:link outcome="fornecedor">Fornecedor</p:link></li>
+	</ui:define>
+
+	<ui:define name="content">
+		
+		<h2>• Lista de Fornecedores</h2>
+	
+		<p:messages id="messages" showDetail="true" closable="true">
+        	<p:autoUpdate />
+   		</p:messages>
+		
+		<h:form>
+			<p:dataTable var="fornecedor" value="#{fornecedorController.listaFornecedor}" id="tabelaFornecedor">
+					<p:column headerText="Nome" style="text-align: center">
+						<h:outputText value="#{fornecedor.nomeFantasia}" />
+					</p:column>
+					<p:column headerText="CNPJ" style="text-align: center">
+						<h:outputText value="#{fornecedor.cnpj}" />
+					</p:column>
+					<p:column headerText="Produtos" style="text-align: center">
+						<h:outputText value="10" />
+					</p:column>
+					<p:column headerText="Editar" style="text-align: center">
+						<p:commandButton value="Editar" action="#{fornecedorController.editar(fornecedor)}" />
+					</p:column>
+					<p:column headerText="Excluir" style="text-align: center">
+						<p:commandButton value="Excluir" action="#{fornecedorController.excluirFornecedor(fornecedor)}" update="tabelaFornecedor"/>
+					</p:column>
+			</p:dataTable>
+		</h:form>
+		
+		<p:commandButton value="Novo Fornecedor" action="novoFornecedor.xhtml?faces-redirect=true" style="margin-top: 20px; padding: 10px;" />
+	</ui:define>
+
+</ui:composition>

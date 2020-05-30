@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/backoffice/templateBackoffice/template.xhtml">
+
+	<ui:define name="title">Fornecedor</ui:define>
+
+	<ui:define name="head"></ui:define>
+	<ui:define name="viewname">
+		<li><p:link outcome="fornecedor">Novo Fornecedor</p:link></li>
+	</ui:define>
+
+	<ui:define name="content">
+	
+		<p:messages id="messages" closable="true">
+        	<p:autoUpdate />
+   		</p:messages>
+		
+		<h2>• Criar/editar Fornecedores</h2>
+	
+		<h:form id="formFornecedor" >
+		    <div class="p-field ui-fluid ui-fluid" style="margin: 5px 0 5px 0">
+				<p:outputLabel for="@next" value="Razão Social" />
+				<p:inputText id="razaoSocial" value="#{fornecedorController.fornecedorPadrao.razaoSocial}" required="true" requiredMessage="Razão Social obrigatório" />
+			</div>
+
+		    <div class="p-field ui-fluid ui-fluid" style="margin: 5px 0 5px 0">
+				<p:outputLabel for="@next" value="Nome Fantasia" />
+				<p:inputText id="nomeFantasia" value="#{fornecedorController.fornecedorPadrao.nomeFantasia}" required="true" requiredMessage="Nome Fantasia obrigatório" />
+			</div>
+			
+		    <div class="p-field ui-fluid ui-fluid" style="margin: 5px 0 5px 0">
+				<p:outputLabel for="@next" value="CNPJ" />
+				<p:inputText id="cnpj" value="#{fornecedorController.fornecedorPadrao.cnpj}" required="true" requiredMessage="CNPJ obrigatório" />
+			</div>
+		
+			<div style="text-align: right;">
+				<p:commandButton value="Salvar" action="#{fornecedorController.salvar}" />
+			</div>
+			
+		</h:form>
+		
+		<p:commandButton value="Lista Fornecedor" action="fornecedor.xhtml?faces-redirect=true" style="margin-top: 20px; padding: 10px;" />
+	</ui:define>
+
+</ui:composition>
